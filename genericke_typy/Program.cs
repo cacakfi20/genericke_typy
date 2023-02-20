@@ -34,22 +34,24 @@ public class Stack<T>
 
 public class Dictionary<TKey, TValue>
 {
-    public Dictionary<TKey, TValue> dict { get; set; }
-    
+    public Dictionary<TKey, TValue> Dict { get; set; }
+    public int count
+    {
+        get { return Dict.Count(); } //nevim, proc nefunguje tenhle operator
+    }
     public int indexer = 0;
-    public int count { get; set; }
 
     public void Add(TKey key, TValue value)
     {
-        dict.Add(key, value);
+        Dict.Add(key, value);
         indexer++;
     }
 
     public void Remove(TKey key)
     {
-        if (dict.ContainsKey(key)) //nevim, proc nefunguje tenhle operator
+        if (Dict.ContainsKey(key)) //nevim, proc nefunguje tenhle operator
         {
-            dict.Remove(key);
+            Dict.Remove(key);
             indexer--;
         }
         else
@@ -57,12 +59,6 @@ public class Dictionary<TKey, TValue>
             Console.WriteLine($"{key} nebyl nalezen");
         }
         
-    }
-
-    public int CountF()
-    {
-        count = dict.Count(); //nevim, proc nefunguje tenhle operator
-        return count;
     }
 
 }
